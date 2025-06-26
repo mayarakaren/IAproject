@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Resultado da Análise</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>🌊Resultado da IA</h1>
+  <p id="emocao">Emoção: ...</p>
+  <img id="imagem-fundo" src="" alt="Imagem do Mar" width="400" />
+
+  <script>
+    const emocao = localStorage.getItem("emocao");
+    const imagem = localStorage.getItem("imagem");
+
+    console.log("emocao:", emocao);
+    console.log("imagem:", imagem);
+
+    // Traduz emoções para português
+    const traducao = {
+      happy: "Feliz",
+      sad: "Triste",
+      neutral: "Neutro"
+    };
+
+    const emocaoTraduzida = traducao[emocao] || emocao;
+
+    document.getElementById("emocao").innerText = "Emoção detectada: " + emocaoTraduzida;
+    document.getElementById("imagem-fundo").src = imagem;
+  </script>
+</body>
+</html>
