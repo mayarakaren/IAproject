@@ -1,55 +1,155 @@
-# Projeto de Reconhecimento Facial com RetinaFace e Flask
+# 🌊 Projeto de Reconhecimento de Emoções com DeepFace + Flask
 
-Este projeto é uma API em Flask que utiliza o modelo RetinaFace para detecção facial e a biblioteca DeepFace para reconhecimento facial e análise de expressões.
+Este é um projeto educacional e interativo de **inteligência artificial** que usa visão computacional para **reconhecer emoções faciais** e retornar uma imagem temática de fundo do mar baseada na emoção detectada.
 
----
-
-## Requisitos
-
-- Python 3.8+
-- As bibliotecas listadas no arquivo `requirements.txt` (veja abaixo)
+A aplicação conta com:
+- Um backend em **Flask**,
+- Detecção de emoções com **DeepFace**,
+- Um frontend simples em **HTML/CSS/JS** para interação visual.
 
 ---
 
-## Como configurar o ambiente
+## 💡 Como funciona?
 
-### 1. Criar um ambiente virtual
+1. O usuário envia uma foto pelo frontend (ou via API).
+2. O backend processa a imagem usando o **DeepFace** e identifica a **emoção dominante**.
+3. De acordo com a emoção (`happy`, `sad`, `neutral`), o sistema retorna **uma imagem aleatória de fundo do mar** correspondente.
+4. Essa imagem é exibida dinamicamente no frontend.
 
-No terminal, dentro da pasta do projeto, execute:
+---
+
+## 📌 Tecnologias utilizadas
+
+- [Python 3.10.11](https://www.python.org/downloads/)
+- [Flask](https://flask.palletsprojects.com/)
+- [DeepFace](https://github.com/serengil/deepface)
+- [OpenCV](https://opencv.org/)
+- [NumPy](https://numpy.org/)
+- HTML, CSS e JavaScript (frontend)
+
+---
+
+## 📦 Requisitos do sistema
+
+- Python 3.10.11 instalado
+- Git (opcional para clonar)
+- Ambiente virtual (recomendado)
+
+---
+
+## 🛠️ Como configurar o projeto
+
+### 1. Clone o repositório
+
+```bash
+git clone https://github.com/seu-usuario/seu-repositorio.git
+cd seu-repositorio
+````
+
+### 2. Crie o ambiente virtual
 
 ```bash
 python -m venv venv
-````
+```
 
-Isso cria uma pasta chamada `venv` com o ambiente virtual isolado.
+### 3. Ative o ambiente virtual
 
-### 2. Ativar o ambiente virtual
-
-* No Windows:
+* **Windows**:
 
 ```bash
 venv\Scripts\activate
 ```
 
-* No Linux/Mac:
+* **Linux/Mac**:
 
 ```bash
 source venv/bin/activate
 ```
 
-### 3. Instalar as dependências
-
-Com o ambiente ativado, rode:
+### 4. Instale as dependências
 
 ```bash
-pip install -r requirements.txt
+pip install -r backend/requirements.txt
 ```
 
 ---
 
-## Dependências
+## 🚀 Como executar a aplicação
 
-As bibliotecas utilizadas são:
+Com o ambiente virtual ativado:
+
+```bash
+python backend/app.py
+```
+
+O servidor será iniciado em `http://127.0.0.1:5000`.
+
+Abra o arquivo `frontend/index.html` no navegador ou acesse o frontend automaticamente se o `index.html` estiver sendo servido pelo Flask.
+
+---
+
+## 🎯 Endpoints disponíveis
+
+### `/analisa-rosto`
+
+`POST` com uma imagem (campo `imagem` via FormData)
+
+**Retorno:**
+
+```json
+{
+  "emocao": "happy",
+  "imagem_fundo": "/static/mar_feliz/2.png"
+}
+```
+
+**Erros possíveis:**
+
+```json
+{
+  "erro": "Nenhuma imagem enviada"
+}
+```
+
+---
+
+## 🧠 Emoções reconhecidas
+
+O projeto suporta as seguintes emoções através do `DeepFace`:
+
+* `happy`
+* `sad`
+* `neutral`
+
+Se a emoção não for reconhecida, será usada uma imagem neutra por padrão.
+
+---
+
+## 📁 Estrutura de pastas
+
+```
+/
+├── backend/
+│   ├── app.py                 # API principal
+│   ├── requirements.txt       # Bibliotecas necessárias
+│   └── static/
+│       ├── mar_feliz/         # Imagens para emoção "happy"
+│       ├── mar_triste/        # Imagens para emoção "sad"
+│       └── mar_neutro/        # Imagens para emoção "neutral"
+│
+├── frontend/
+│   ├── index.html             # Página principal
+│   ├── resultado.html         # Página de exibição da emoção
+│   ├── script.js              # Lógica JS do frontend
+│   └── style.css              # Estilo visual
+│
+├── .gitignore                 # Arquivos a serem ignorados pelo Git
+└── README.md                  # Este documento
+```
+
+---
+
+## ✅ `requirements.txt`
 
 ```
 flask==2.3.3
@@ -62,49 +162,25 @@ tensorflow==2.10.1
 
 ---
 
-## Como rodar o projeto
+## 🙋‍♀️ Como contribuir
 
-Com o ambiente ativado, execute:
-
-```bash
-python app.py
-```
-
-O servidor Flask será iniciado e ficará aguardando requisições. Você pode usar seu frontend ou fazer requisições diretamente para a API.
+1. Faça um fork deste repositório
+2. Crie uma branch com sua feature: `git checkout -b minha-feature`
+3. Faça commit das suas mudanças: `git commit -m 'Minha feature'`
+4. Faça push para a sua branch: `git push origin minha-feature`
+5. Abra um Pull Request
 
 ---
 
-## Funcionamento geral
+## 📄 Licença
 
-* O backend em Flask recebe imagens via requisição HTTP.
-* Utiliza o RetinaFace para detectar faces na imagem.
-* Com a face detectada, o DeepFace realiza reconhecimento facial e análise de emoções.
-* Retorna os resultados para o cliente (frontend, app, etc).
+Este projeto está licenciado sob a licença **MIT**.
+Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
 
 ---
 
-## Estrutura do projeto
+## ✨ Créditos
 
-```
-/
-|-- app.py                  # Código principal da API Flask
-|-- requirements.txt        # Dependências do projeto
-|-- README.md               # Este arquivo
-|-- static/                 # Arquivos estáticos (opcional)
-|-- templates/              # Templates HTML (opcional)
-|-- venv/                   # Ambiente virtual (não subir no GitHub)
-```
+Este projeto foi desenvolvido com fins educacionais e criativos, conectando inteligência artificial, tecnologia e arte interativa.
 
 ---
-
-## Como contribuir
-
-* Abra issues para bugs ou sugestões.
-* Envie pull requests com melhorias.
-* Mantenha o padrão de código e teste as mudanças localmente.
-
----
-
-## Licença
-
-Este projeto está licenciado sob a licença MIT. Veja o arquivo LICENSE para detalhes.
