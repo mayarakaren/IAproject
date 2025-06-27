@@ -10,6 +10,10 @@
   <p id="emocao">Emoção: ...</p>
   <img id="imagem-fundo" src="" alt="Imagem do Mar" width="400" />
 
+  <div style="margin-top: 24px;">
+    <button onclick="voltarParaInicio()">Voltar para o Início</button>
+  </div>
+
   <script>
     const emocao = localStorage.getItem("emocao");
     const imagem = localStorage.getItem("imagem");
@@ -28,6 +32,11 @@
 
     document.getElementById("emocao").innerText = "Emoção detectada: " + emocaoTraduzida;
     document.getElementById("imagem-fundo").src = imagem;
+
+    function voltarParaInicio() {
+      window.location.href = "index.html";
+    }
+    
   </script>
 </body>
 </html>
