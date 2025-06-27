@@ -1,5 +1,17 @@
+let chatbotAberto = false;
+
 function abrirChatbot() {
-  alert("Abrindo Chat-bot... (aqui irá o código real)");
+  const chatbot = document.querySelector("df-messenger");
+
+  if (!chatbot) return;
+
+  if (!chatbotAberto) {
+    chatbot.style.display = "block";
+    chatbotAberto = true;
+  } else {
+    chatbot.style.display = "none";
+    chatbotAberto = false;
+  }
 }
 
 function abrirReconhecimento() {

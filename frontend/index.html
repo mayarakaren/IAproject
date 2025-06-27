@@ -33,6 +33,15 @@
 
   <div class="btn-container">
     <button onclick="abrirChatbot()">Abrir Chat-bot</button>
+          <!-- Script do Dialogflow Messenger -->
+      <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+      <df-messenger
+        intent="WELCOME"
+        chat-title="ChatOcean"
+        agent-id="1866d704-4b53-4598-a3b7-9fa7fcbc7a19"
+        language-code="pt-br"
+        style="display: none;">
+      </df-messenger>
     <button onclick="abrirReconhecimento()">IA de Reconhecimento</button>
   </div>
 
