@@ -8,7 +8,7 @@ import cv2                                          # OpenCV para ler a imagem
 import numpy as np                                  # Para converter bytes em imagem
 
 # Inicializando o app Flask
-app = Flask(__name__)
+app = Flask(__name__, static_folder="../frontend", static_url_path="")
 CORS(app)
 
 # Mapeia emoções para as pastas de imagens
@@ -34,7 +34,7 @@ def escolher_imagem(emocao):
 
 @app.route("/")
 def index():
-    return send_from_directory("../frontend", "index.html")
+    return send_from_directory(app.static_folder, "index.html")
 
 @app.route("/<path:filename>")
 def frontend_arquivos(filename):
@@ -85,3 +85,5 @@ def analisa_rosto():
 # Inicia o servidor local do Flask
 if __name__ == "__main__":
     app.run(debug=True)
+
+app = app
