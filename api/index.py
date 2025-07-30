@@ -8,14 +8,14 @@ import cv2                                          # OpenCV para ler a imagem
 import numpy as np                                  # Para converter bytes em imagem
 
 # Inicializando o app Flask
-app = Flask(__name__, static_folder="../frontend", static_url_path="")
+app = Flask(__name__, static_folder="../frontend/static", static_url_path="")
 CORS(app)
 
 # Mapeia emoções para as pastas de imagens
 emocoes_para_pastas = {
-    "happy": "backend/static/mar_feliz",
-    "sad": "backend/static/mar_triste",
-    "neutral": "backend/static/mar_neutro"
+    "happy": "static/mar_feliz",
+    "sad": "static/mar_triste",
+    "neutral": "static/mar_neutro"
 }
 
 # Função auxiliar para escolher uma imagem aleatória de uma pasta
