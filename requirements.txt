@@ -1,9 +1,0 @@
-pip>=23.0.0
-setuptools>=65.0.0
-wheel>=0.38.0
-flask==2.3.3
-flask-cors==3.0.10
-deepface==0.0.79
-numpy==1.23.5
-opencv-python-headless==4.8.0.74
-tensorflow==2.10.1
